@@ -17,7 +17,7 @@ services:
       - 10080:80
     #ホスト側にあるディレクトリとファイルをコンテナ内へマウント(同期)させている。
     volumes:
-      #ホスト側のbackendフォルダとdockerのコンテナ内のworkフォルダが同期する。
+      #ホスト側のbackendフォルダとdockerのコンテナ内のlaravel.8.xフォルダが同期する。
       - ./backend:/work
       #ホスト側のinfra/nginx/default.confとdockerのコンテナ内の/etc/nginx/conf.d/default.confが同期する。
       - ./infra/nginx/default.conf:/etc/nginx/conf.d/default.conf
