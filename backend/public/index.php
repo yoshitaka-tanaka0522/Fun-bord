@@ -35,8 +35,8 @@ require __DIR__.'/../vendor/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
-| Run The Application
-|--------------------------------------------------------------------------
+| Run The Application(visualstudioコードの中心で愛を叫ぶ(*^-^*)(*^-^*))(*^-^*)(*^-^*)
+(*^-^*)(*^-^*)(*^-^*)(*^-^*)(*^-^*)(*^-^*)(*^-^*)(*^-^*)(*^-^*)|--------------------------------------------------------------------------
 |
 | Once we have the application, we can handle the incoming request using
 | the application's HTTP kernel. Then, we will send the response back
