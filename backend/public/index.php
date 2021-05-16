@@ -35,7 +35,7 @@ require __DIR__.'/../vendor/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
-| Run The Application(visualstudioコードの中心で愛を叫ぶ(*^-^*)(*^-^*))(*^-^*)(*^-^*)
+| Run The Application(visualstudio田中田中田中田中
 (*^-^*)(*^-^*)(*^-^*)(*^-^*)(*^-^*)(*^-^*)(*^-^*)(*^-^*)(*^-^*)|--------------------------------------------------------------------------
 |
 | Once we have the application, we can handle the incoming request using
