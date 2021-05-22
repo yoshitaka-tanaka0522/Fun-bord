@@ -3,6 +3,7 @@ services:
   app:
     build: ./infra/php
     volumes:
+      # ローカル(ホストPC)のbackendフォルダの中身と、docker内に作成したworkファルダの中身を同期
       - ./backend:/work
 
   web:
@@ -26,6 +27,8 @@ services:
     build: ./infra/mysql
     volumes:
       - db-store:/var/lib/mysql
+    ports:
+      - 33060:3306
 #volumesはトップレベル(2行目のservicesと同じレベル)に貼り付けることでデータの永続化を行う
 volumes:
   db-store:
