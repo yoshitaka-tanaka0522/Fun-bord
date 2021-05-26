@@ -13,6 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    echo '初期画面の表示';
-});
+Route::get('/','BulletinBoardController@index')->name('bulletin.index');
+Route::get('/create','BulletinBoardController@create')->name('bulletin.create');
