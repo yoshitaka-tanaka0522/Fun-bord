@@ -34,9 +34,8 @@ if (file_exists(__DIR__.'/../storage/framework/maintenance.php')) {
 require __DIR__.'/../vendor/autoload.php';
 
 /*
-|--------------------------------------------------------------------------
-| Run The Application(visualstudio田中田中田中田中
-(*^-^*)(*^-^*)(*^-^*)(*^-^*)(*^-^*)(*^-^*)(*^-^*)(*^-^*)(*^-^*)|--------------------------------------------------------------------------
+=======
+| Run The Application
 |
 | Once we have the application, we can handle the incoming request using
 | the application's HTTP kernel. Then, we will send the response back
