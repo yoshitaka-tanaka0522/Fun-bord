@@ -42,63 +42,7 @@ class BulletinBoardController extends Controller
         return view('bulletin.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //https://readouble.com/laravel/8.x/ja/requests.html
-        //入力されたデータを取得するのは依存性の注入リクエスト、
-        //データを保存する際はeloquentのメソッドを使用https://qiita.com/shosho/items/5ca6bdb880b130260586
-        $bulletin = new BulletinBoard;
-        $bulletin->language_type = $request->input('language_type');
-        $bulletin->account_name = $request->input('account_name');
-        $bulletin->title = $request->input('title');
-        $bulletin->question = $request->input('question');
-        $bulletin->question_id = mt_rand();
-        $bulletin->save();
-        return redirect('/bulletin');
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //https://readouble.com/laravel/8.x/ja/eloquent-collections.html(find)
-        $bulletin = BulletinBoard::find($id);
-        //もし値によって、表示する内容を変えたかった場合(0は男性、1は女性みたいな)
-        //変数に新たに格納してcompactに引数増やして渡す。
-        // if($bulletin->age === 0) {
-        //     $gender = '男性';
-        // }
-        // if($bulletin->age === 1) {
-        //     $gender = '女性';
-        // }
-        $comments = $bulletin->comments()->get();
-        return view('bulletin.show',compact('bulletin','comments'));
-        //もし↑のgederを渡したかったら以下のように書く
-        // return view('bulletin.show',compact('bulletin','gender'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //editもshowの時同様に1件のデータがあればいい
-        $bulletin = BulletinBoard::find($id);
-        return view('bulletin.edit',compact('bulletin'));
-    }
 
     /**
      * Update the specified resource in storage.
@@ -119,17 +63,4 @@ class BulletinBoardController extends Controller
         return redirect('/bulletin');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-        $bulletin = BulletinBoard::find($id);
-        $bulletin->delete();
-        return redirect('/bulletin');
-    }
 }
