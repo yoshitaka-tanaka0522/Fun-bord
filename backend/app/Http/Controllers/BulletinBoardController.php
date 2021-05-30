@@ -59,7 +59,8 @@ class BulletinBoardController extends Controller
     {
         $bulletin = BulletinBoard::find($id);
         // return view('show')-> with('bulletin', $bulletin);
-        return view('bulletin.show',compact('bulletin'));
+        $comments = $bulletin->comments()->get();
+        return view('bulletin.show',compact('bulletin','comments'));
     }
 
     public function edit($id)
