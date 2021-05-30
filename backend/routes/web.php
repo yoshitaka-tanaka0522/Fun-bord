@@ -28,6 +28,8 @@ Route::group(['prefix' => 'bulletin','middleware' => 'auth'],function() {
     Route::get('/','BulletinBoardController@index')->name('bulletin.index');
     Route::get('/create','BulletinBoardController@create')->name('bulletin.create');
     //https://readouble.com/laravel/8.x/ja/routing.html(ルートパラメータ)
+    Route::get('/show/{id}','BulletinBoardController@show')->name('bulletin.show');
+    Route::get('/edit/{id}','BulletinBoardController@edit')->name('bulletin.edit');
     Route::post('/update/{id}','BulletinBoardController@update')->name('bulletin.update');
 });
 Auth::routes();
