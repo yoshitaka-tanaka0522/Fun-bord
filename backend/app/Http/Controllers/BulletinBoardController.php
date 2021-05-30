@@ -42,6 +42,7 @@ class BulletinBoardController extends Controller
         return view('bulletin.create');
     }
 
+
     public function store(Request $request)
     {
 
@@ -53,7 +54,20 @@ class BulletinBoardController extends Controller
         $bulletin->save();
         return redirect('/bulletin');
     }
+  
+      public function show($id)
+    {
+        $bulletin = BulletinBoard::find($id);
+        // return view('show')-> with('bulletin', $bulletin);
+        return view('bulletin.show',compact('bulletin'));
+    }
 
+    public function edit($id)
+    {
+        //editもshowの時同様に1件のデータがあればいい
+        $bulletin = BulletinBoard::find($id);
+        return view('bulletin.edit',compact('bulletin'));
+    }
 
     /**
      * Update the specified resource in storage.
