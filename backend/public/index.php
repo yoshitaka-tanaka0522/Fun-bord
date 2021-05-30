@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));
 
-/*
+/*laravel test
 |--------------------------------------------------------------------------
 | Check If The Application Is Under Maintenance
 |--------------------------------------------------------------------------

@@ -42,6 +42,17 @@ class BulletinBoardController extends Controller
         return view('bulletin.create');
     }
 
+    public function store(Request $request)
+    {
+
+        $bulletin = new BulletinBoard;
+        $bulletin->language_type = $request->input('language_type');
+        $bulletin->account_name = $request->input('account_name');
+        $bulletin->title = $request->input('title');
+        $bulletin->question = $request->input('question');
+        $bulletin->save();
+        return redirect('/bulletin');
+    }
 
 
     /**
@@ -58,9 +69,14 @@ class BulletinBoardController extends Controller
         $bulletin->language_type = $request->input('language_type');
         $bulletin->account_name = $request->input('account_name');
         $bulletin->title = $request->input('title');
-        $bulletin->question = $request->input('question');        
+        $bulletin->question = $request->input('question');
         $bulletin->save();
         return redirect('/bulletin');
+    }
+
+    public function destroy($id)
+    {
+
     }
 
 }
