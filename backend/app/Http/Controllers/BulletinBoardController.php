@@ -54,7 +54,7 @@ class BulletinBoardController extends Controller
         $bulletin->save();
         return redirect('/bulletin');
     }
-  
+
       public function show($id)
     {
         $bulletin = BulletinBoard::find($id);
@@ -90,7 +90,10 @@ class BulletinBoardController extends Controller
 
     public function destroy($id)
     {
-
+        //削除ボタンを押下した時に、データ１件分を取得する。
+        $bulletin = BulletinBoard::find($id);
+        $bulletin->delete();
+        return redirect('/bulletin');
     }
 
 }

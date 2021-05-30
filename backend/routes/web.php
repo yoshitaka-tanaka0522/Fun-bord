@@ -31,6 +31,7 @@ Route::group(['prefix' => 'bulletin','middleware' => 'auth'],function() {
     Route::get('/show/{id}','BulletinBoardController@show')->name('bulletin.show');
     Route::get('/edit/{id}','BulletinBoardController@edit')->name('bulletin.edit');
     Route::post('/update/{id}','BulletinBoardController@update')->name('bulletin.update');
+    Route::post('/destroy/{id}','BulletingBoardController@destroy')->name('bulletin.destroy');
 });
 Auth::routes();
 
