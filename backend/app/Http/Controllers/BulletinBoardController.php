@@ -51,6 +51,7 @@ class BulletinBoardController extends Controller
         $bulletin->account_name = $request->input('account_name');
         $bulletin->title = $request->input('title');
         $bulletin->question = $request->input('question');
+        $bulletin->question_id = mt_rand();
         $bulletin->save();
         return redirect('/bulletin');
     }
