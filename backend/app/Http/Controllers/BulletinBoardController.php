@@ -47,6 +47,7 @@ class BulletinBoardController extends Controller
     {
 
         $bulletin = new BulletinBoard;
+        $bulletin->id = $request->user()->id;
         $bulletin->language_type = $request->input('language_type');
         $bulletin->account_name = $request->input('account_name');
         $bulletin->title = $request->input('title');

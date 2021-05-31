@@ -13,9 +13,7 @@ class CreateBulletinBoardsTable extends Migration
      */
     public function up()
     {
-        Schema::create('bulletin_boards', function (Blueprint $table) {
-            $table->charset = 'utf8mb4';
-            $table->collation = 'utf8mb4_unicode_ci';         
+        Schema::create('bulletin_boards', function (Blueprint $table) {      
             $table->Integer('id');
             $table->string('language_type', 12);
             $table->string('account_name', 20);

@@ -24,11 +24,15 @@ services:
 
   db:
     build: ./infra/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: laravel_local
+    
     volumes:
       - db-store:/var/lib/mysql
     ports:
       #mysqlクライアントツール使用するためのポート
-      - 33060:3306
+      - 3306:3306
 #volumesはトップレベル(2行目のservicesと同じレベル)に貼り付けることでデータの永続化を行う
 volumes:
   db-store:
