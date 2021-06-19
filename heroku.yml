@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 setup:
   addons:
     - plan: heroku-postgresql
@@ -22,3 +23,29 @@ run:
     command:
       - python asset-syncer.py
     image: worker
+=======
+setup:
+  addons:
+    - plan: heroku-postgresql
+      as: DATABASE
+  config:
+    S3_BUCKET: my-example-bucket
+build:
+  docker:
+    web: Dockerfile
+    worker: infra/php/Dockerfile
+  config:
+    RAILS_ENV: development
+    FOO: bar
+release:
+  command:
+    - ./deployment-tasks.sh
+  image: worker
+run:
+  web: bundle exec puma -C config/puma.rb
+  worker: python myworker.py
+  asset-syncer:
+    command:
+      - python asset-syncer.py
+    image: worker
+>>>>>>> 4855da5ca57aa4387ae453c5559c8136da837fe4
