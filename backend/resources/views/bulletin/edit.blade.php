@@ -14,7 +14,6 @@
                         </div>
                     @endif
 
-                    editです。
                     <!--_id、account_name、title、question、、question_id、registered_date(created_at)、respondant_name、answer、answer_date、resolved、-->
                     <form method="POST" action=" {{ route('bulletin.update',['id' => $bulletin->id ]) }} ">
                         @csrf

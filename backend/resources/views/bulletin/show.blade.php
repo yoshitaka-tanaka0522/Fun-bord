@@ -17,7 +17,7 @@
             <h5 class="card-text col-2 mb-2">{{ $bulletin -> language_type}}</h5>
          </div>
          <p class="card-text">{{ $bulletin -> question}}</p>
-         <p class="text-right mr-3">{{$bulletin -> account_name}} / {{ $bulletin -> question_id}}</p>
+         <p class="text-right mr-3">{{$bulletin ->account_name}} / {{ $bulletin ->id}}</p>
          <div class="row pt-2">
             <a href="/bulletin/edit/{{ $bulletin -> id }}" class="btn btn-primary col-1 ml-3 mr-2">編集する</a>
             <form method="POST" action="{{ route('bulletin.destroy',['id' => $bulletin->id]) }}" id="delete_{{ $bulletin->id }}">

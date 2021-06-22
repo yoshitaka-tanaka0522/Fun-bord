@@ -14,12 +14,11 @@ class CreateBulletinBoardsTable extends Migration
     public function up()
     {
         Schema::create('bulletin_boards', function (Blueprint $table) {      
-            $table->Integer('id');
+            $table->bigIncrements('id');
             $table->string('language_type', 12);
             $table->string('account_name', 20);
             $table->string('title', 100);
             $table->string('question', 2000);
-            $table->integer('question_id',30);
             $table->timestamps();       
         });
     }

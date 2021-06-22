@@ -19,6 +19,10 @@
                             新規登録 
                         </button>
                     </form>
+                    <form method="GET" class="d-flex" action="{{ route('bulletin.index') }}">
+                        <input class="form-control me-2" name="search" type="search" placeholder="検索" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>                    
                     <!--'id','account_name','title','question','question_id','created_at'-->
                     <!--スタイルについて→https://getbootstrap.jp/docs/4.1/content/tables/-->
                     <table class="table">

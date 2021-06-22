@@ -14,7 +14,7 @@ class BulletinBoardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         // ------Eroquent(エロクワント)を使用する場合------------------------------
         // →https://readouble.com/laravel/8.x/ja/eloquent.html
@@ -25,10 +25,33 @@ class BulletinBoardController extends Controller
         // ----------------------------------------------------------
         //------Facadesを使用する場合(クエリビルダ)------------------------------
         //use Illuminate\Support\Facades\DB;を追加
-        $bulletinBoards = DB::table('bulletin_boards')
-        ->select('id','language_type','account_name','title','question','question_id','created_at')
-        ->get();
-        return view('bulletin.index',compact('bulletinBoards'));
+        $search = $request->input('search');
+        //データの中身はdd()で見れる
+        // dd($request);
+
+        // $bulletinBoards = DB::table('bulletin_boards')
+        // ->select('id','language_type','account_name','title','question','created_at')
+        // ->orderBy('created_at','asc')
+        // ->paginate(20);
+        // return view('bulletin.index',compact('bulletinBoards'));
+
+        //検索処理
+        $query = DB::table('bulletin_boards');
+        //検索キーワードがある場合
+        if($search != null) {
+            //全角スペースを半角にする
+            $search_split = mb_convert_kana($search,'s');
+            //空白で検索文字を区切る
+            $search_split2 = preg_split('/[\s]+/', $search_split,-1,PREG_SPLIT_NO_EMPTY);
+            foreach($search_split2 as $value) 
+            {
+              $query->where('question','like','%' .$value . '%');
+            }
+        }
+        $query->select('id','language_type','account_name','title','question','created_at');
+        $query->orderBy('created_at','asc');
+        $bulletinBoards = $query->paginate(20);
+        return view('bulletin.index',compact('bulletinBoards'));        
     }
 
     /**
@@ -47,12 +70,10 @@ class BulletinBoardController extends Controller
     {
 
         $bulletin = new BulletinBoard;
-        $bulletin->id = $request->user()->id;
         $bulletin->language_type = $request->input('language_type');
         $bulletin->account_name = $request->input('account_name');
         $bulletin->title = $request->input('title');
         $bulletin->question = $request->input('question');
-        $bulletin->question_id = mt_rand();
         $bulletin->save();
         return redirect('/bulletin');
     }
